@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="PiecewiseLinearFunctionDesigner.Module.Demonstration.Views.FunctionGraphView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:d3="clr-namespace:InteractiveDataDisplay.Core;assembly=InteractiveDataDisplay.Core"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <GroupBox Header="{Binding TextLocalization.Graph}" Visibility="{Binding ControlVisibility}" Margin="25 0 0 0">
+        <StackPanel>
+            <Grid Width="450" Height="450">
+                <d3:Chart
+                    BottomTitle="{Binding TextLocalization.Temperature}"
+                    LeftTitle="{Binding TextLocalization.AbsoluteMark}">
+                    <d3:Plot>
+                        <Grid Name="graphs"/>
+                    </d3:Plot>
+                </d3:Chart>
+            </Grid>
+        </StackPanel>
+    </GroupBox>
+</UserControl>

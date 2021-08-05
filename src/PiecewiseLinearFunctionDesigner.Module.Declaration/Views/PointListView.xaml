@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="PiecewiseLinearFunctionDesigner.Module.Declaration.Views.PointListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"
+             d:DesignHeight="400" d:DesignWidth="300">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"></ColumnDefinition>
+                <ColumnDefinition Width="210"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Row="0" Grid.ColumnSpan="4"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                SelectedIndex="{Binding SelectedPoint, Mode=TwoWay}"
+                SelectionMode="Single"
+                ItemsSource="{Binding Points}"
+                AutoGenerateColumns="False"
+                CanUserDeleteRows="False"
+                CanUserAddRows="False"
+                MaxHeight="300">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Абсолютная отметка" Binding="{Binding Path=X}" Width="1*" CanUserSort="False" />
+                    <DataGridTextColumn Header="Температура" Binding="{Binding Path=Y}" Width="1*" CanUserSort="False" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Grid.Row="1" Grid.Column="0"
+                Command="{Binding AddPointCommand}"
+                HorizontalAlignment="Left"
+                Content="Добавить"
+                Margin="0 10 0 0"
+                Width="120" 
+            />
+            <Button Grid.Row="1" Grid.Column="1"
+                    Command="{Binding DeletePointCommand}"
+                    HorizontalAlignment="Left"
+                    Content="Удалить"
+                    Margin="0 10 0 0"
+                    Width="120" 
+            />
+            <Button Grid.Row="1" Grid.Column="2"
+                    Command="{Binding CopyToClipboardCommand}"
+                    HorizontalAlignment="Right"
+                    Content="В буфер"
+                    Margin="0 10 0 0"
+                    Width="80" 
+            />
+            <Button Grid.Row="1" Grid.Column="3"
+                    Command="{Binding GetFromClipboardCommand}"
+                    HorizontalAlignment="Right"
+                    Content="Из буфера"
+                    Margin="0 10 0 0"
+                    Width="80" 
+            />
+    </Grid>
+</UserControl>
